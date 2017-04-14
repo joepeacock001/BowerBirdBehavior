@@ -2,11 +2,11 @@ package bowerBird;
 
 import lejos.robotics.subsumption.Behavior;
 
-public class TooFarFromHomeBehavior implements Behavior{
+public class SeeFemaleBehavior implements Behavior{
 
 	private boolean suppressed = false;
 
-	public TooFarFromHomeBehavior()
+	public SeeFemaleBehavior()
 	{
 
 	}
@@ -14,7 +14,7 @@ public class TooFarFromHomeBehavior implements Behavior{
 	@Override
 	public boolean takeControl()
 	{
-		//take control when we are too far from home
+    //take control when we detect a female
 	}
 
 	@Override
