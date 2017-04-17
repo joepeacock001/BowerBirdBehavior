@@ -22,6 +22,22 @@ public class MovementUtils {
 
   }
 
+  public void goHome(){
+	  
+  }
   
-
+  public void halfwayHome(){
+	  
+  }
+  
+  public void scoop(){
+	  
+  }
+  
+  public void drop(){
+	  
+  }
+  
+  
+ 
 }
