@@ -1,14 +1,16 @@
 package bowerBird;
 
 import lejos.robotics.subsumption.Behavior;
+import java.lang.Math;
 
 public class WanderBehavior implements Behavior{
 
 	private boolean suppressed = false;
+private MovementUtils mover;
 
 	public WanderBehavior()
 	{
-
+		mover = new MovementUtils();
 	}
 
 	@Override
@@ -23,8 +25,17 @@ public class WanderBehavior implements Behavior{
 
 		while (!suppressed)
 		{
-			//do things here
-
+			int shouldTurn = (int)(Math.random()*10000);
+			if (shouldTurn == 11)
+			{
+				mover.turnRandom();
+			}
+			else
+			{
+				mover.goForward();
+			}
+			suppressed = !takeControl();
+			Thread.yield();
 		}
 
 	}

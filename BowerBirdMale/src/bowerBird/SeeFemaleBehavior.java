@@ -1,10 +1,12 @@
 package bowerBird;
 
 import lejos.robotics.subsumption.Behavior;
+import lejos.hardware.motor.Motor;
 
 public class SeeFemaleBehavior implements Behavior{
 
 	private boolean suppressed = false;
+	private boolean wingUp = false;
 
 	public SeeFemaleBehavior()
 	{
@@ -22,8 +24,17 @@ public class SeeFemaleBehavior implements Behavior{
 
 		while (!suppressed)
 		{
-			//do things here
+			if (wingUp)
+			{
+				Motor.B.rotate(30);
+			}
+			else
+			{
+				Motor.B.rotate(-30);
+			}
 
+			suppressed = !takeControl();
+			Thread.yield();
 		}
 
 	}
