@@ -5,13 +5,13 @@ import lejos.robotics.subsumption.Behavior;
 public class FoundObjectBehavior implements Behavior{
 
 	private boolean suppressed = false;
-	private MovementUtils wander;
+	private MovementUtils mover;
 	private SensorUtils senses;
-	private int COLOR_THRESHOLD = .3;
+	private float COLOR_THRESHOLD = (float).3;
 
 	public FoundObjectBehavior()
 	{
-		wander = new MovementUtils();
+		mover = new MovementUtils();
 		senses = new SensorUtils();
 	}
 

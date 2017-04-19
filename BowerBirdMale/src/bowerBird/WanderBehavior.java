@@ -28,11 +28,11 @@ private MovementUtils mover;
 			int shouldTurn = (int)(Math.random()*10000);
 			if (shouldTurn == 11)
 			{
-				mover.turnRandom();
+				mover.turnRandomDegrees();
 			}
 			else
 			{
-				mover.goForward();
+				mover.moveForward();
 			}
 			suppressed = !takeControl();
 			Thread.yield();

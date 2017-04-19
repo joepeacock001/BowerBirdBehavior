@@ -7,7 +7,7 @@ public class TooFarFromHomeBehavior implements Behavior{
 	private boolean suppressed = false;
 	private MovementUtils mover;
 	private SensorUtils senses;
-	private float DISTANCE_THRESHOLD = 1.1;
+	private float DISTANCE_THRESHOLD = (float)1.1;
 
 	public TooFarFromHomeBehavior()
 	{

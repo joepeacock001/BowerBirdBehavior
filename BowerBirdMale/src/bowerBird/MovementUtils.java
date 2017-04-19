@@ -4,6 +4,7 @@ import lejos.hardware.motor.EV3LargeRegulatedMotor;
 import lejos.hardware.motor.EV3MediumRegulatedMotor;
 import lejos.hardware.port.MotorPort;
 import lejos.robotics.RegulatedMotor;
+import lejos.utility.Delay;
 
 public class MovementUtils {
 //make motors
@@ -12,7 +13,6 @@ public class MovementUtils {
   private RegulatedMotor  Scoop = new EV3MediumRegulatedMotor(MotorPort.C);
   private RegulatedMotor  Right = new EV3LargeRegulatedMotor(MotorPort.D);
   private int speed = 300;
-  private int degrees = 360;
   private int ScoopDegrees=90;
   
   public void moveForward(){
@@ -34,25 +34,19 @@ public class MovementUtils {
 	  Right.stop();
   }
   
-  public void turn(int degrees, boolean right){
-	  if (right) {
-		  Left.rotate(degrees);
-		  Right.rotate(-degrees);
-	  }
-	  
-	  else{
-		  Left.rotate(-degrees);
+  public void turn(int degrees){
+
+		  Left.rotate((-1)*degrees);
 		  Right.rotate(degrees);
-	  }
+	  
 	  	
   }
 
-  public void turnRandom(){
-	  double random = Math.random();
-	  if (random>0.5)
-		  turn(degrees,true);
-	  else
-		  turn(degrees,false);
+  
+  public void turnRandomDegrees(){
+	  int turnDegrees = (int)(Math.random()*720 - 360);
+	  turn(turnDegrees);
+	
   }
 
   public void goHome(){
@@ -64,15 +58,16 @@ public class MovementUtils {
   }
   
   public void scoop(){
-	  Left.rotate(360);
-	  Right.rotate(360);
-	  Scoop.rotate(ScoopDegrees);
+	  Left.rotate(270,true);
+	  Right.rotate(270);
+	  Scoop.rotate(-45);
   }
   
   public void drop(){
-	  Scoop.rotate(-ScoopDegrees);
-	  Left.rotate(-360);
-	  Right.rotate(-360);
+	  Scoop.rotate(45);
+	  Left.rotate(-270,true);
+	  Right.rotate(-270);
+	  Scoop.rotate(45);
   }
   
 }

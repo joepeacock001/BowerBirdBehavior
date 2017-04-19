@@ -16,7 +16,7 @@ public class SensorUtils {
 		sensorIR = new EV3IRSensor(SensorPort.S2);
 		sensorColor = new EV3ColorSensor(SensorPort.S1);
 		IR = sensorIR.getSeekMode();
-		color = sensorColor.getColorIDMode();
+		color = sensorColor.getRGBMode();
 		IRSample = new float[IR.sampleSize()];
 		colorSample = new float[color.sampleSize()];
 	}
@@ -37,8 +37,16 @@ public class SensorUtils {
 		return IRSample[0];
 	}
 	
-	public float getColorID(){
+	public float getRed(){
 		return colorSample[0];
+	}
+	
+	public float getGreen(){
+		return colorSample[1];
+	}
+	
+	public float getBlue(){
+		return colorSample[2];
 	}
 	
 	
