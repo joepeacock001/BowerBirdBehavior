@@ -1,39 +1,45 @@
 package bowerBird;
 
+import lejos.hardware.port.SensorPort;
+import lejos.hardware.sensor.EV3ColorSensor;
+import lejos.hardware.sensor.EV3IRSensor;
+import lejos.robotics.SampleProvider;
+
 public class SensorUtils {
-//add sensors as variables
-// ir in seek mode
-// color sensor in color mode
+	private EV3IRSensor sensorIR;
+	private EV3ColorSensor sensorColor;
+	private float[] IRSample, colorSample;
+	private SampleProvider IR,color;
+
 	
 	public SensorUtils(){
-		//assign sensors
+		sensorIR = new EV3IRSensor(SensorPort.S2);
+		sensorColor = new EV3ColorSensor(SensorPort.S1);
+		IR = sensorIR.getSeekMode();
+		color = sensorColor.getColorIDMode();
+		IRSample = new float[IR.sampleSize()];
+		colorSample = new float[color.sampleSize()];
 	}
 	
 	public void getIRReading(){
-		
+		sensorIR.fetchSample(IRSample, 0);
 	}
 	
 	public void getColorReading(){
-		
+		sensorColor.fetchSample(colorSample, 0);
 	}
 	
 	public float getDistance(){
-		
+		return IRSample[1];
 	}
 	
 	public float getDirection(){
-		
+		return IRSample[0];
 	}
 	
-	public float getRed(){
-		
+	public float getColorID(){
+		return colorSample[0];
 	}
 	
-	public float getGreen(){
-			
-	}
-		
-	public float getBlue(){
-		
-	}
+	
 }
