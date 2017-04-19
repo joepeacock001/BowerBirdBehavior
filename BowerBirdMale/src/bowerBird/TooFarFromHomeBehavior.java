@@ -5,25 +5,36 @@ import lejos.robotics.subsumption.Behavior;
 public class TooFarFromHomeBehavior implements Behavior{
 
 	private boolean suppressed = false;
+	private MovementUtils mover;
+	private SensorUtils senses;
+	private float DISTANCE_THRESHOLD = 1.1;
 
 	public TooFarFromHomeBehavior()
 	{
-
+		mover = new MovementUtils();
+		senses = new SensorUtils();
 	}
 
 	@Override
 	public boolean takeControl()
 	{
-		//take control when we are too far from home
+		senses.getIRReading();
+		if (senses.getDistance() > DISTANCE_THRESHOLD)
+		{
+			return true;
+		}
+		return false;
 	}
 
 	@Override
 	public void action() {
-
+		suppressed = false;
 		while (!suppressed)
 		{
-			//do things here
+			mover.halfwayHome();
 
+			suppressed = !takeControl();
+			Thread.yield();
 		}
 
 	}
