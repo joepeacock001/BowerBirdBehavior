@@ -15,6 +15,12 @@ public class MovementUtils {
   private int speed = 300;
   private int ScoopDegrees=90;
   
+  public MovementUtils()
+  {
+		Left.setSpeed(145);
+		Right.setSpeed(145);
+  }
+  
   public void moveForward(){
 	  Left.setSpeed(speed);
 	  Right.setSpeed(speed);
@@ -57,17 +63,14 @@ public class MovementUtils {
 	  
   }
   
-  public void scoop(){
-	  Left.rotate(270,true);
-	  Right.rotate(270);
-	  Scoop.rotate(-45);
-  }
-  
-  public void drop(){
-	  Scoop.rotate(45);
-	  Left.rotate(-270,true);
-	  Right.rotate(-270);
-	  Scoop.rotate(45);
-  }
+	public void up()
+	{
+		Scoop.rotate(-111);
+	}
+	
+	public void down()
+	{
+		Scoop.rotate(111);
+	}
   
 }

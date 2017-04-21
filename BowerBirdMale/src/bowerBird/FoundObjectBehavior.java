@@ -20,9 +20,10 @@ public class FoundObjectBehavior implements Behavior{
 	{
     //take control when we see a color with the color sensor
   	senses.getColorReading();
-		if (senses.getRed() > COLOR_THRESHOLD) { return true; }
-		if (senses.getBlue() > COLOR_THRESHOLD) { return true; }
-		if (senses.getGreen() > COLOR_THRESHOLD) { return true; }
+		if (senses.getColor() != -1)
+		{
+			return true;
+		}
 		return false;
 	}
 
@@ -31,9 +32,19 @@ public class FoundObjectBehavior implements Behavior{
 
 		while (!suppressed)
 		{
-			mover.scoop();
-			mover.goHome();
-			mover.drop();
+			if (senses.getColor() == 2)
+			{
+				mover.goHome();
+				mover.up();
+				mover.moveForward();
+			}	
+			else
+			{
+				mover.up();
+				mover.moveForward();
+				mover.down();
+			}
+				
 			suppressed = !takeControl();
 			Thread.yield();
 		}
