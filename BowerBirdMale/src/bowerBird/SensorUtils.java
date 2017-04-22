@@ -3,7 +3,9 @@ package bowerBird;
 import lejos.hardware.port.SensorPort;
 import lejos.hardware.sensor.EV3ColorSensor;
 import lejos.hardware.sensor.EV3IRSensor;
+import lejos.hardware.sensor.EV3TouchSensor;
 import lejos.robotics.SampleProvider;
+import lejos.robotics.TouchAdapter;
 
 public class SensorUtils {
 	private EV3ColorSensor sensorColor;
@@ -13,8 +15,7 @@ public class SensorUtils {
 	private EV3ColorSensor lightRight;
 	private TouchAdapter ts;
 
-
-	public SensorUtils(){
+	public SensorUtils() {
 		sensorColor = new EV3ColorSensor(SensorPort.S1);
 		color = sensorColor.getAmbientMode();
 		colorSample = new float[color.sampleSize()];
@@ -29,41 +30,25 @@ public class SensorUtils {
 		ts = new TouchAdapter(new EV3TouchSensor(SensorPort.S2));
 	}
 
-	public void getIRReading(){
-		sensorIR.fetchSample(IRSample, 0);
-	}
-
-	public void getColorReading(){
+	public void getColorReading() {
 		sensorColor.fetchSample(colorSample, 0);
 	}
 
-	public float getDistance(){
-		return IRSample[1];
-	}
-
-	public float getDirection(){
-		return IRSample[0];
-	}
-
-	public float getColor(){
+	public float getColor() {
 		return colorSample[0];
 	}
 
-	public void takeLightReading()
-	{
+	public void takeLightReading() {
 		left.fetchSample(leftSample, 0);
 		right.fetchSample(rightSample, 0);
 	}
 
-	public float getLeft()
-	{
+	public float getLeft() {
 		return leftSample[0];
 	}
 
-	public void getRight()
-	{
+	public float getRight() {
 		return rightSample[0];
 	}
-
 
 }
