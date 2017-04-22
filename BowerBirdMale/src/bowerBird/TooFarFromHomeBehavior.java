@@ -31,7 +31,7 @@ public class TooFarFromHomeBehavior implements Behavior{
 		suppressed = false;
 		while (!suppressed)
 		{
-			mover.halfwayHome();
+			mover.goTowardsHome(0.12);
 
 			suppressed = !takeControl();
 			Thread.yield();

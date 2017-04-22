@@ -34,17 +34,17 @@ public class FoundObjectBehavior implements Behavior{
 		{
 			if (senses.getColor() == 2)
 			{
-				mover.goHome();
+				mover.goTowardsHome(0.2);
 				mover.up();
 				mover.moveForward();
-			}	
+			}
 			else
 			{
 				mover.up();
 				mover.moveForward();
 				mover.down();
 			}
-				
+
 			suppressed = !takeControl();
 			Thread.yield();
 		}
