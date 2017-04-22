@@ -32,6 +32,12 @@ public class MovementUtils {
 	  Right.backward();
   }
 
+  public void move(int degrees)
+  {
+    Left.rotate(degrees, true);
+    Right.rotate(degrees);
+  }
+
   public void stop(){
 	  Left.stop();
 	  Right.stop();

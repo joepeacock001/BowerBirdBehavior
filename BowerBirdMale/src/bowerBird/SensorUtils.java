@@ -6,20 +6,17 @@ import lejos.hardware.sensor.EV3IRSensor;
 import lejos.robotics.SampleProvider;
 
 public class SensorUtils {
-	private EV3IRSensor sensorIR;
 	private EV3ColorSensor sensorColor;
-	private float[] IRSample, colorSample;
-	private SampleProvider IR,color;
+	private float[] colorSample, leftSample, rightSample;
+	private SampleProvider color, left, right;
 	private EV3ColorSensor lightLeft;
 	private EV3ColorSensor lightRight;
+	private TouchAdapter ts;
 
 
 	public SensorUtils(){
-		sensorIR = new EV3IRSensor(SensorPort.S2);
 		sensorColor = new EV3ColorSensor(SensorPort.S1);
-		IR = sensorIR.getSeekMode();
 		color = sensorColor.getAmbientMode();
-		IRSample = new float[IR.sampleSize()];
 		colorSample = new float[color.sampleSize()];
 
 		lightLeft = new EV3ColorSensor(SensorPort.S3);
@@ -28,6 +25,8 @@ public class SensorUtils {
 		right = lightRight.getAmbientMode();
 		leftSample = new float[left.sampleSize()];
 		rightSample = new float[right.sampleSize()];
+
+		ts = new TouchAdapter(new EV3TouchSensor(SensorPort.S2));
 	}
 
 	public void getIRReading(){
