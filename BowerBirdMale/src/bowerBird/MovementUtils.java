@@ -23,21 +23,6 @@ public class MovementUtils {
 		Right.forward();
 	}
 
-	public void moveBackward() {
-		Left.backward();
-		Right.backward();
-	}
-
-	public void move(int degrees) {
-		Left.rotate(degrees, true);
-		Right.rotate(degrees);
-	}
-
-	public void stop() {
-		Left.stop();
-		Right.stop();
-	}
-
 	public void turnLeft() {
 		Right.backward();
 		Left.forward();
@@ -52,22 +37,18 @@ public class MovementUtils {
 
 		Left.rotate((-1) * degrees);
 		Right.rotate(degrees);
-
 	}
 
 	public void turnRandomDegrees() {
-		int turnDegrees = (int) (Math.random() * 630 - 315);
+		int turnDegrees = (int) (Math.random() * 420 - 210);
 		turn(turnDegrees);
-
 	}
 
-	public void setLeftSpeed(int speed)
-	{
+	public void setLeftSpeed(int speed) {
 		Left.setSpeed(speed);
 	}
-	
-	public void setRightSpeed(int speed)
-	{
+
+	public void setRightSpeed(int speed) {
 		Right.setSpeed(speed);
 	}
 
@@ -91,11 +72,9 @@ public class MovementUtils {
 	public void down() {
 		Scoop.rotate(111);
 	}
-	
-	public void turnAround()
-	{
-		Left.rotate(195);
-		Right.rotate(-195);
+
+	public void turnAround() {
+		turn(180);
 	}
 
 }

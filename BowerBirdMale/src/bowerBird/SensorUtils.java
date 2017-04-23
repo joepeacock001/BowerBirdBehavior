@@ -17,7 +17,7 @@ public class SensorUtils {
 
 	public SensorUtils() {
 		sensorColor = new EV3ColorSensor(SensorPort.S1);
-		color = sensorColor.getAmbientMode();
+		color = sensorColor.getColorIDMode();
 		colorSample = new float[color.sampleSize()];
 
 		lightLeft = new EV3ColorSensor(SensorPort.S3);
@@ -49,6 +49,10 @@ public class SensorUtils {
 
 	public float getRight() {
 		return rightSample[0];
+	}
+
+	public boolean isTouched() {
+		return ts.isPressed();
 	}
 
 }
