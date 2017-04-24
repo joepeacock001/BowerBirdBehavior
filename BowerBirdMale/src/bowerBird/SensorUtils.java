@@ -7,7 +7,11 @@ import lejos.hardware.sensor.EV3TouchSensor;
 import lejos.robotics.SampleProvider;
 import lejos.robotics.TouchAdapter;
 
+/**
+ * Decoupling all of the sensing into one helper class
+ */
 public class SensorUtils {
+
 	private EV3ColorSensor sensorColor;
 	private float[] colorSample, leftSample, rightSample;
 	private SampleProvider color, left, right;
@@ -15,6 +19,10 @@ public class SensorUtils {
 	private EV3ColorSensor lightRight;
 	private TouchAdapter ts;
 
+/**
+ * Initialization of sensors
+ * @return nothing
+ */
 	public SensorUtils() {
 		sensorColor = new EV3ColorSensor(SensorPort.S1);
 		color = sensorColor.getColorIDMode();

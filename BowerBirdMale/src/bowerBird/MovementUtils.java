@@ -6,6 +6,9 @@ import lejos.hardware.port.MotorPort;
 import lejos.robotics.RegulatedMotor;
 import lejos.utility.Delay;
 
+/**
+ * Decouples all of the movement functions into one helper class
+ */
 public class MovementUtils {
 	// make motors
 	private RegulatedMotor Left = new EV3LargeRegulatedMotor(MotorPort.A);
@@ -13,6 +16,10 @@ public class MovementUtils {
 	private RegulatedMotor Scoop = new EV3MediumRegulatedMotor(MotorPort.C);
 	private RegulatedMotor Right = new EV3LargeRegulatedMotor(MotorPort.D);
 
+/**
+ * Sets initial speed
+ * @return nothing
+ */
 	public MovementUtils() {
 		Left.setSpeed(145);
 		Right.setSpeed(145);
@@ -39,6 +46,9 @@ public class MovementUtils {
 		Right.rotate(degrees);
 	}
 
+/**
+ * Turns up to a half rotation in either direction, randomly.
+ */
 	public void turnRandomDegrees() {
 		int turnDegrees = (int) (Math.random() * 420 - 210);
 		turn(turnDegrees);
@@ -65,10 +75,16 @@ public class MovementUtils {
 		Wing.rotate(degrees);
 	}
 
+/**
+ * Lifts the 'claw' for releasing objects
+ */
 	public void up() {
 		Scoop.rotate(-111);
 	}
 
+/**
+ * Lowers the 'claw' for collecting objects
+ */
 	public void down() {
 		Scoop.rotate(111);
 	}
